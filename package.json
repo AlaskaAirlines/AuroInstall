@@ -1,0 +1,22 @@
+{
+  "//": [
+    "================================================================================",
+    "# This is a non-functional repository for the aurokit package.                #",
+    "================================================================================"
+  ],
+  "name": "@aurodesignsystem/auroinstall",
+  "description": "One package, quick Auro ecosystem install package",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlaskaAirlines/AuroInstall.git"
+  },
+  "engines": {
+    "node": "^20.x || ^22.x "
+  },
+  "type": "module",
+  "license": "Apache-2.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
