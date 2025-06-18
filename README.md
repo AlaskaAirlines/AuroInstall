@@ -1,13 +1,13 @@
-# Welcome to AuroKit
+# Welcome to Auro Install Kit
 
-The `@aurodesignsystem/aurokit` install package is a comprehensive npm package designed to simplify the installation and management of Auro design system components and supporting libraries. It consolidates all essential Auro packages into a single installable bundle, ensuring compatibility and reducing the complexity of dependency management for developers.
+The `@aurodesignsystem/installkit` install package is a comprehensive npm package designed to simplify the installation and management of Auro design system components and supporting libraries. It consolidates all essential Auro packages into a single installable bundle, ensuring compatibility and reducing the complexity of dependency management for developers.
 
 ## Installation
 
-To install `@aurodesignsystem/aurokit`, run:
+To install `@aurodesignsystem/installkit`, run:
 
 ```bash
-npm install @aurodesignsystem/aurokit -S
+npm install @aurodesignsystem/installkit -S
 ```
 
 ## Updating AuroKit
@@ -28,7 +28,7 @@ AuroKit, by design, will only release once a quarter per the update and release 
 
 ```js
 "overrides": {
-  "@aurodesignsystem/aurokit": {
+  "@aurodesignsystem/installkit": {
     "@aurodesignsystem/auro-formkit": "~4.0.0"
   }
 }
@@ -36,7 +36,7 @@ AuroKit, by design, will only release once a quarter per the update and release 
 
 ## Overview
 
-The Auro web component ecosystem is comprised of numerous npm packages, each maintained and versioned independently. While this modular structure offers flexibility, it can be challenging for developers to manage installations and maintain consistent versions across projects. `@aurodesignsystem/aurokit` addresses these challenges by providing a streamlined solution:
+The Auro web component ecosystem is comprised of numerous npm packages, each maintained and versioned independently. While this modular structure offers flexibility, it can be challenging for developers to manage installations and maintain consistent versions across projects. `@aurodesignsystem/installkit` addresses these challenges by providing a streamlined solution:
 
 - **Single Installation**: One command to install all core Auro packages.
 - **Version Compatibility**: Packages included in AuroKit are pre-validated by the Auro team to ensure seamless compatibility.
