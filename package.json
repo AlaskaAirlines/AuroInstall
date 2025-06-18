@@ -4,19 +4,126 @@
     "# This is a non-functional repository for the aurokit package.                #",
     "================================================================================"
   ],
-  "name": "@aurodesignsystem/auroinstall",
-  "description": "One package, quick Auro ecosystem install package",
+  "name": "@aurodesignsystem/installkit",
   "version": "1.0.0",
+  "description": "One package, quick Auro ecosystem install package",
   "repository": {
     "type": "git",
     "url": "https://github.com/AlaskaAirlines/AuroInstall.git"
   },
+  "type": "module",
+  "license": "Apache-2.0",
   "engines": {
     "node": "^20.x || ^22.x "
   },
-  "type": "module",
-  "license": "Apache-2.0",
+  "dependencies": {
+    "@alaskaairux/icons": "~5.5.0",
+    "@aurodesignsystem/auro-accordion": "~5.2.1",
+    "@aurodesignsystem/auro-alert": "~4.1.0",
+    "@aurodesignsystem/auro-avatar": "~6.1.0",
+    "@aurodesignsystem/auro-background": "~4.0.2",
+    "@aurodesignsystem/auro-backtotop": "~4.0.2",
+    "@aurodesignsystem/auro-badge": "~5.0.0",
+    "@aurodesignsystem/auro-banner": "~4.1.0",
+    "@aurodesignsystem/auro-button": "~11.1.0",
+    "@aurodesignsystem/auro-card": "~5.1.1",
+    "@aurodesignsystem/auro-carousel": "~4.1.0",
+    "@aurodesignsystem/auro-datetime": "~3.0.2",
+    "@aurodesignsystem/auro-dialog": "~3.1.1",
+    "@aurodesignsystem/auro-drawer": "~4.1.2",
+    "@aurodesignsystem/auro-flight": "~4.3.0",
+    "@aurodesignsystem/auro-flightline": "~5.0.0",
+    "@aurodesignsystem/auro-formkit": "~4.0.0",
+    "@aurodesignsystem/auro-header": "~4.0.1",
+    "@aurodesignsystem/auro-hyperlink": "~5.2.0",
+    "@aurodesignsystem/auro-icon": "~8.0.2",
+    "@aurodesignsystem/auro-library": "~5.1.0",
+    "@aurodesignsystem/auro-loader": "~5.0.0",
+    "@aurodesignsystem/auro-lockup": "~5.1.0",
+    "@aurodesignsystem/auro-nav": "~3.2.0",
+    "@aurodesignsystem/auro-pane": "~4.1.1",
+    "@aurodesignsystem/auro-popover": "~5.0.2",
+    "@aurodesignsystem/auro-sidenav": "~4.1.0",
+    "@aurodesignsystem/auro-skeleton": "~4.1.0",
+    "@aurodesignsystem/auro-table": "~4.1.0",
+    "@aurodesignsystem/auro-toast": "~3.1.1",
+    "@aurodesignsystem/design-tokens": "~8.2.0",
+    "@aurodesignsystem/webcorestylesheets": "~9.0.2",
+    "chalk": "~5.4.1"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.5",
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^12.0.1",
+    "@storybook/addon-a11y": "~8.6.4",
+    "@storybook/addon-essentials": "^8.6.4",
+    "@storybook/blocks": "^8.6.4",
+    "@storybook/experimental-addon-test": "^8.6.4",
+    "@storybook/test": "^8.6.4",
+    "@storybook/web-components": "^8.6.4",
+    "@storybook/web-components-vite": "^8.6.4",
+    "@web/dev-server": "^0.4.5",
+    "@web/test-runner": "^0.20.0",
+    "lit": "^3.2.1",
+    "nodemon": "^3.1.0",
+    "npm-run-all": "^4.1.5",
+    "semantic-release": "^24.2.3",
+    "storybook": "^8.6.4"
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 iOS major versions",
+    "last 2 Firefox versions",
+    "last 2 Edge versions",
+    "last 2 Safari major versions"
+  ],
+  "release": {
+    "branches": [
+      {
+        "name": "main"
+      },
+      {
+        "name": "beta",
+        "prerelease": true
+      }
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "./CHANGELOG.md",
+          "changelogTitle": "# Semantic Release Automated Changelog"
+        }
+      ],
+      "@semantic-release/npm",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "./package.json",
+            "./CHANGELOG.md"
+          ]
+        }
+      ],
+      "@semantic-release/github"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "alaska airlines",
+    "auro",
+    "design system"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   }
 }
