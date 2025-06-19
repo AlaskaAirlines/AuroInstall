@@ -1,6 +1,6 @@
 # Maintaining your fork's upstream relationship
 
-So you forked this repo. That's awesome. But don't forget you keep your `main` branch in sync with the upstream `main` branch to ensure that your pull requests will always be able to be merged.
+So you forked this repo. That's awesome. But don't forget to keep your `main` branch in sync with the upstream `main` branch to ensure that your pull requests will always be able to be merged.
 
 ## How to sync with upstream?
 
@@ -17,14 +17,14 @@ $ git remote -v
 This should return
 
 ```bash
-origin  https://github.com/[yourUserName]/aurokit.git (fetch)
-origin  https://github.com/[yourUserName]/aurokit.git (push)
+origin  https://github.com/[yourUserName]/installkit.git (fetch)
+origin  https://github.com/[yourUserName]/installkit.git (push)
 ```
 
 To add the upstream repo to your local forked project
 
 ```bash
-$ git remote add upstream https://github.com/AlaskaAirlines/aurokit.git
+$ git remote add upstream https://github.com/AlaskaAirlines/installkit.git
 ```
 
 To validate this worked, run the following again
@@ -34,10 +34,10 @@ $ git remote -v
 ```
 
 ```
-origin  https://github.com/[yourUserName]/aurokit.git (fetch)
-origin  https://github.com/[yourUserName]/aurokit.git (push)
-upstream        https://github.com/AlaskaAirlines/aurokit.git (fetch)
-upstream        https://github.com/AlaskaAirlines/aurokit.git (push)
+origin  https://github.com/[yourUserName]/installkit.git (fetch)
+origin  https://github.com/[yourUserName]/installkit.git (push)
+upstream        https://github.com/AlaskaAirlines/installkit.git (fetch)
+upstream        https://github.com/AlaskaAirlines/installkit.git (push)
 ```
 
 #### Sync upstream
@@ -51,7 +51,7 @@ $ git fetch upstream
 $ git rebase upstream/main
 ```
 
-Then to sync your feature brach,
+Then to sync your feature branch,
 
 ```bash
 $ git checkout feature-branch
