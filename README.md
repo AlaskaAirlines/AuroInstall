@@ -10,27 +10,46 @@ To install `@aurodesignsystem/installkit`, run:
 npm install @aurodesignsystem/installkit -S
 ```
 
-## Updating AuroKit
+## Updating Auro Install Kit
 
-Once installed, it is recommended that users update AuroKit and its dependencies, by running:
+Once installed, it is recommended that users update Auro Install Kit and its dependencies, by running:
 
 ```bash
 npm update
 ```
 
-This command will automatically apply compatible **patch updates**, as defined by npm’s semver handling. Major and minor updates will be installed via SEMVER changes to AuroKit itself.
+This command will automatically apply compatible **patch updates**, as defined by npm’s semver handling. Major and minor updates will be installed via SEMVER changes to Auro Install Kit itself.
 
-AuroKit will never release versions based on **patch updates**.
+Auro Install Kit will never release versions based on **patch updates**.
+
+## Nested version installs
+
+While Auro Install Kit will list the latest versions of components to be installed, this does NOT mean that only this version will be installed. Due to interdependencies of Auro components, NPM will do its best to ensure that the correct version listed in the `package.json` is installed with the component.
+
+For example, if a package (like `auro-cli`) has its own `node_modules` with a specific version of `@aurodesignsystem/auro-library`, it will use that version. If not, Node.js will fall back to a version higher up in the directory tree, which may lead to version mismatches. To ensure consistent behavior, each package should have its own correctly resolved dependencies.
+
+If incompatibility issues appear when using Auro Install Kit, it is recommended to either to a clean install, `npm ci`. If issues persist, it may be an issue with `package-lock.json`, which might require deleting your `./node_modules` folder and the `package-lock.json` file, then running `npm install`.
+
 
 ## Applying overrides
 
-AuroKit, by design, will only release once a quarter per the update and release policy defined below. If the project requires updated dependencies that are not part of the current AuroKit release, the best solution is to use [npm overrides](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#overrides). See the example below:
+Auro Install Kit, by design, will only release once a quarter per the update and release policy defined below. If the project requires updated dependencies that are not part of the current Auro Install Kit release, the best solution is to use [npm overrides](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#overrides). See the example below:
 
 ```js
 "overrides": {
   "@aurodesignsystem/installkit": {
-    "@aurodesignsystem/auro-formkit": "~4.0.0"
+    "@aurodesignsystem/auro-library": "~5.4"
   }
+}
+```
+
+This override only affects the subtree under `@aurodesignsystem/installkit`. Other packages (like `@aurodesignsystem/auro-toast`) will still use whatever they originally asked for, which is currently `@aurodesignsystem/auro-library@4.5.0`.
+
+If your intention is to ensures every dependency gets the same version, use the following as an example. Be warned, this may cause issues with incompatible features.
+
+```js
+"overrides": {
+  "@aurodesignsystem/auro-library": "~5.4"
 }
 ```
 
@@ -39,7 +58,7 @@ AuroKit, by design, will only release once a quarter per the update and release 
 The Auro web component ecosystem is comprised of numerous npm packages, each maintained and versioned independently. While this modular structure offers flexibility, it can be challenging for developers to manage installations and maintain consistent versions across projects. `@aurodesignsystem/installkit` addresses these challenges by providing a streamlined solution:
 
 - **Single Installation**: One command to install all core Auro packages.
-- **Version Compatibility**: Packages included in AuroKit are pre-validated by the Auro team to ensure seamless compatibility.
+- **Version Compatibility**: Packages included in Auro Install Kit are pre-validated by the Auro team to ensure seamless compatibility.
 - **Simplified Updates**: Use `npm update` to apply patch updates automatically.
 
 ## Features
@@ -51,26 +70,26 @@ The Auro web component ecosystem is comprised of numerous npm packages, each mai
   - **Quarterly Minor Releases**: Introduces new features and improvements predictably every quarter.
   - **Annual Major Releases**: Aligns with Node.js LTS updates to maintain compatibility with current development standards.
 
-##  AuroKit Project Policy and Maintenance Guidelines
+##  Auro Install Kit Project Policy and Maintenance Guidelines
 
 **Objective:**
-AuroKit serves as a comprehensive wrapper for the Auro Design System, allowing users to install a single package to access all Auro components. This document defines the policies for updates, testing, and release cadence to ensure seamless integration and stability.
+Auro Install Kit serves as a comprehensive wrapper for the Auro Design System, allowing users to install a single package to access all Auro components. This document defines the policies for updates, testing, and release cadence to ensure seamless integration and stability.
 
 ### Update and Release Policy:
 
 1. Patch Updates:
    - Users manage patch updates via `npm update`.
-   - AuroKit will not release new versions for individual component patch updates, as consumers can apply these updates independently. AuroKit's package.json uses the `~` version range for each Auro package to ensure that `npm update` will only affect PATCH releases.
+   - Auro Install Kit will not release new versions for individual component patch updates, as consumers can apply these updates independently. Auro Install Kit's package.json uses the `~` version range for each Auro package to ensure that `npm update` will only affect PATCH releases.
 
 2. Minor Updates:
    - All minor updates of individual Auro components must be tested in combination to confirm compatibility and system integrity.
-   - AuroKit will be released with a minor version update to include these tested components.
-   - Minor releases of AuroKit are limited to once per quarter.
+   - Auro Install Kit will be released with a minor version update to include these tested components.
+   - Minor releases of Auro Install Kit are limited to once per quarter.
 
 3. Major Updates:
    - Major component updates trigger a thorough integration test across all components.
-   - AuroKit will issue a major release upon successful integration of these updates.
-   - Major releases of AuroKit are limited to once per year.
+   - Auro Install Kit will issue a major release upon successful integration of these updates.
+   - Major releases of Auro Install Kit are limited to once per year.
 
 ### Version Management:
 - `npm update` will only permit patch updates for individual components to avoid unintended breaking changes.
@@ -80,7 +99,7 @@ AuroKit serves as a comprehensive wrapper for the Auro Design System, allowing u
 - Comprehensive testing is mandatory for all minor and major updates before release.
 - Automated and manual testing protocols will be followed to ensure robustness.
 
-This structured approach ensures AuroKit remains reliable and current, balancing innovation with stability for users.
+This structured approach ensures Auro Install Kit remains reliable and current, balancing innovation with stability for users.
 
 ## Roadmap
 
