@@ -1,0 +1,21 @@
+# standard ignore
+*config*
+*conf*
+LICENSE
+NOTICE
+
+.github/
+.gitignore
+commitlint.config.cjs
+.stylelintrc
+
+coverage/
+docs/
+scripts/
+test/
+packageScripts/
+stories/
+
+# ignore src
+src/**/*.scss
+src/**/*.css

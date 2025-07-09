@@ -1,3 +1,115 @@
-# Welcome to Auro Install
+# Welcome to Auro Install Kit
 
-tbd...
+The `@aurodesignsystem/installkit` install package is a comprehensive npm package designed to simplify the installation and management of Auro design system components and supporting libraries. It consolidates all essential Auro packages into a single installable bundle, ensuring compatibility and reducing the complexity of dependency management for developers.
+
+## Installation
+
+To install `@aurodesignsystem/installkit`, run:
+
+```bash
+npm install @aurodesignsystem/installkit -S
+```
+
+## Updating Auro Install Kit
+
+Once installed, it is recommended that users update Auro Install Kit and its dependencies, by running:
+
+```bash
+npm update
+```
+
+This command will automatically apply compatible **patch updates**, as defined by npm’s semver handling. Major and minor updates will be installed via SEMVER changes to Auro Install Kit itself.
+
+Auro Install Kit will never release versions based on **patch updates**.
+
+## Nested version installs
+
+While Auro Install Kit will list the latest versions of components to be installed, this does NOT mean that only this version will be installed. Due to interdependencies of Auro components, NPM will do its best to ensure that the correct version listed in the `package.json` is installed with the component.
+
+For example, if a package (like `auro-cli`) has its own `node_modules` with a specific version of `@aurodesignsystem/auro-library`, it will use that version. If not, Node.js will fall back to a version higher up in the directory tree, which may lead to version mismatches. To ensure consistent behavior, each package should have its own correctly resolved dependencies.
+
+If incompatibility issues appear when using Auro Install Kit, it is recommended to either to a clean install, `npm ci`. If issues persist, it may be an issue with `package-lock.json`, which might require deleting your `./node_modules` folder and the `package-lock.json` file, then running `npm install`.
+
+
+## Applying overrides
+
+Auro Install Kit, by design, will only release once a quarter per the update and release policy defined below. If the project requires updated dependencies that are not part of the current Auro Install Kit release, the best solution is to use [npm overrides](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#overrides). See the example below:
+
+```js
+"overrides": {
+  "@aurodesignsystem/installkit": {
+    "@aurodesignsystem/auro-library": "~5.4"
+  }
+}
+```
+
+This override only affects the subtree under `@aurodesignsystem/installkit`. Other packages (like `@aurodesignsystem/auro-toast`) will still use whatever they originally asked for, which is currently `@aurodesignsystem/auro-library@4.5.0`.
+
+If your intention is to ensures every dependency gets the same version, use the following as an example. Be warned, this may cause issues with incompatible features.
+
+```js
+"overrides": {
+  "@aurodesignsystem/auro-library": "~5.4"
+}
+```
+
+## Overview
+
+The Auro web component ecosystem is comprised of numerous npm packages, each maintained and versioned independently. While this modular structure offers flexibility, it can be challenging for developers to manage installations and maintain consistent versions across projects. `@aurodesignsystem/installkit` addresses these challenges by providing a streamlined solution:
+
+- **Single Installation**: One command to install all core Auro packages.
+- **Version Compatibility**: Packages included in Auro Install Kit are pre-validated by the Auro team to ensure seamless compatibility.
+- **Simplified Updates**: Use `npm update` to apply patch updates automatically.
+
+## Features
+
+- **Ease of Installation**: Install all core Auro components with one command.
+- **Validated Versions**: Ensures that the included package versions have been vetted for compatibility.
+- **Streamlined Updates**: Leverage `npm update` to keep patch updates current.
+- **Scheduled Release Cycle**:
+  - **Quarterly Minor Releases**: Introduces new features and improvements predictably every quarter.
+  - **Annual Major Releases**: Aligns with Node.js LTS updates to maintain compatibility with current development standards.
+
+##  Auro Install Kit Project Policy and Maintenance Guidelines
+
+**Objective:**
+Auro Install Kit serves as a comprehensive wrapper for the Auro Design System, allowing users to install a single package to access all Auro components. This document defines the policies for updates, testing, and release cadence to ensure seamless integration and stability.
+
+### Update and Release Policy:
+
+1. Patch Updates:
+   - Users manage patch updates via `npm update`.
+   - Auro Install Kit will not release new versions for individual component patch updates, as consumers can apply these updates independently. Auro Install Kit's package.json uses the `~` version range for each Auro package to ensure that `npm update` will only affect PATCH releases.
+
+2. Minor Updates:
+   - All minor updates of individual Auro components must be tested in combination to confirm compatibility and system integrity.
+   - Auro Install Kit will be released with a minor version update to include these tested components.
+   - Minor releases of Auro Install Kit are limited to once per quarter.
+
+3. Major Updates:
+   - Major component updates trigger a thorough integration test across all components.
+   - Auro Install Kit will issue a major release upon successful integration of these updates.
+   - Major releases of Auro Install Kit are limited to once per year.
+
+### Version Management:
+- `npm update` will only permit patch updates for individual components to avoid unintended breaking changes.
+- Minor and major updates will be strategically scheduled to maintain stability and predictability for consumers.
+
+### Testing and Quality Assurance:
+- Comprehensive testing is mandatory for all minor and major updates before release.
+- Automated and manual testing protocols will be followed to ensure robustness.
+
+This structured approach ensures Auro Install Kit remains reliable and current, balancing innovation with stability for users.
+
+## Roadmap
+
+- **Quarterly Minor Updates**: Ensuring that new features and enhancements are delivered in a structured manner.
+- **Annual Major Updates**: Planned in line with Node.js LTS updates to support long-term compatibility and stability.
+
+## Support
+
+For questions, issues, or feedback, please refer to the [Auro design system documentation](https://auro.alaskaair.com) or open an issue in this repository.
+
+## Contributing
+
+Contributions are encouraged! For more details, please review our [contributing guidelines](./CONTRIBUTING.md).
